@@ -1,17 +1,17 @@
 import { Request, Response } from 'express';
 import taskService from './task.service';
-import userService from '../users/user.service'; // Importe o serviço de usuário
+import userService from '../users/user.service';
 
 class TaskController {
     async create(req: Request, res: Response) {
         try {
-            const { userId } = req.body; // Extrai o ID do usuário dos dados da requisição
-            const user = await userService.findById(userId); // Verifica se o usuário existe
+            const { userId } = req.body; 
+            const user = await userService.findById(userId); 
             if (!user) {
                 return res.status(404).json({ message: 'Usuário não encontrado' });
             }
 
-            const task = await taskService.create(req.body, userId); // Cria a tarefa associada ao usuário
+            const task = await taskService.create(req.body, userId); 
             res.status(201).json(task);
         } catch (error) {
             res.status(500).json({ message: error.message });

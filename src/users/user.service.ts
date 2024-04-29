@@ -11,7 +11,6 @@ class UserService {
         return foundUser;
     }
 
-    // Adicione outros métodos conforme necessário...
 }
 
 export default new UserService();
